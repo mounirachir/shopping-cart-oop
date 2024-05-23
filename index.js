@@ -89,6 +89,14 @@ class ShoppingCart {
     );
     cartItems.innerHTML = items.join("\n");
   }
+  displayTotalPrice() {
+    const total = document.getElementById("total");
+    total.innerText = this.cart.reduce(
+      (acc, currentItem) => acc + currentItem.calculatePrice(),
+
+      0
+    );
+  }
 }
 
 const myShoppingCart = new ShoppingCart();
@@ -118,5 +126,6 @@ myShoppingCart.addItems(
 
 myShoppingCart.removeItems(1);
 myShoppingCart.displayCartItems();
+myShoppingCart.displayTotalPrice();
 
 console.log(myShoppingCart.cart);
